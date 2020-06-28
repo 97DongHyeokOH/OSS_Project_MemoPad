@@ -5,7 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteX="8dp"
+    tools:layout_editor_absoluteY="8dp"
+    tools:ignore="MissingConstraints"
+    >
 
     <TextView
         android:id="@+id/text"
@@ -18,34 +22,15 @@
         android:textColor="#2D40E6"
         />
 
-    <LinearLayout
+    <Button
+        android:id="@+id/save"
+        android:layout_below="@+id/text"
+        android:layout_toRightOf="@+id/btn_delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/save"
-            android:layout_below="@+id/text"
-            android:layout_toRightOf="@+id/btn_delete"
-            android:layout_marginLeft="10dp"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:text="메모 저장" />
-
-        <Button
-            android:id="@+id/load"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:text="보기" />
-
-        <Button
-            android:id="@+id/delete"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:text="메모 삭제"
-            />
-
-    </LinearLayout>
+        android:text="메모 저장"
+        android:onClick="onClick"
+        />
 
     <EditText
         android:id="@+id/title_text"

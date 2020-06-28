@@ -1,6 +1,8 @@
 package com.professionalandroid.oss_project_memopad;
 
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
@@ -16,8 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
     TextView text;
     Button save;
-    Button load;
-    Button delete;
     EditText title_text;
     EditText maintext;
 
@@ -28,10 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
         text = findViewById(R.id.text);
         save = findViewById(R.id.save);
-        load = findViewById(R.id.load);
-        delete = findViewById(R.id.delete);
         title_text = findViewById(R.id.title_text);
         maintext = findViewById(R.id.maintext);
+
     }
 
     public void onClick(View v) {
@@ -42,20 +41,16 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = MEMO.getWritableDatabase();
         db.execSQL("INSERT INTO Memo(title, content) VALUES(?,?)", new String[]{title, content});
         db.close();
+
+        Intent intent = new Intent(this, ReadMemoActivity.class);
+        startActivity(intent);
     }
 
-    class ReadDBActivity extends AppCompatActivity{
-        @Override
-        protected void onCreate(@Nullable Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_read_db);
-        }
-    }
+    public static class SimpleMemo extends SQLiteOpenHelper{
 
-    class SimpleMemo extends SQLiteOpenHelper{
-
+        public static final int VERSION = 1;
         public SimpleMemo(Context context) {
-            super(context, "MEMO", null, 1);
+            super(context, "MEMO", null, VERSION);
         }
 
         @Override
