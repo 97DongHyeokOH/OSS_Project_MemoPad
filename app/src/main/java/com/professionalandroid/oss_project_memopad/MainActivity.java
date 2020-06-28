@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,25 +32,43 @@ public class MainActivity extends AppCompatActivity {
         delete = findViewById(R.id.delete);
         title_text = findViewById(R.id.title_text);
         maintext = findViewById(R.id.maintext);
+    }
 
+    public void onClick(View v) {
+        String title = title_text.getText().toString();
+        String content = maintext.getText().toString();
 
+        SimpleMemo MEMO = new SimpleMemo(this);
+        SQLiteDatabase db = MEMO.getWritableDatabase();
+        db.execSQL("INSERT INTO Memo(title, content) VALUES(?,?)", new String[]{title, content});
+        db.close();
+    }
+
+    class ReadDBActivity extends AppCompatActivity{
+        @Override
+        protected void onCreate(@Nullable Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_read_db);
+        }
     }
 
     class SimpleMemo extends SQLiteOpenHelper{
 
-        public SimpleMemo(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-            super(context, name, factory, version);
+        public SimpleMemo(Context context) {
+            super(context, "MEMO", null, 1);
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            db.execSQL("CREATE TABLE Memo(gNAME CHAR(20)PRIMARY KEY);");
+            db.execSQL("CREATE TABLE MEMO " + "(_ID INTEGER PRIMARY KEY AUTOINCREMENT," + "TITLE," + "CONTENT)");
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            db.execSQL("DROP TABLE IF EXISTS Memo");
-            onCreate(db);
+            if(newVersion == 1){
+                db.execSQL("DROP TABLE MEMO");
+                onCreate(db);
+            }
         }
     }
 }
