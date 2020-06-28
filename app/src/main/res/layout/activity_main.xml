@@ -17,5 +17,53 @@
         android:tint="#123456"
         android:textColor="#2D40E6"
         />
-    
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/save"
+            android:layout_below="@+id/text"
+            android:layout_toRightOf="@+id/btn_delete"
+            android:layout_marginLeft="10dp"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="메모 저장" />
+
+        <Button
+            android:id="@+id/load"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="보기" />
+
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="메모 삭제"
+            />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/title_text"
+        android:gravity="center_horizontal"
+        android:hint="Title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="30dp"
+        />
+
+    <EditText
+        android:id="@+id/maintext"
+        android:gravity="center_vertical"
+        android:hint="내용을 입력하시오."
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="30dp"
+        />
+
+
 </LinearLayout>
