@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".ReadMemoActivity"
     android:orientation="vertical"
-    tools:context=".MainActivity"
     tools:layout_editor_absoluteX="8dp"
     tools:layout_editor_absoluteY="8dp"
     tools:ignore="MissingConstraints"
     >
+
 
     <TextView
         android:id="@+id/text"
@@ -25,47 +26,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/save"
-            android:layout_width="200dp"
+        <TextView
+            android:id="@+id/TITLE_text"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text"
-            android:layout_marginLeft="5dp"
-            android:onClick="onClick_save"
-            android:text="메모 저장" />
-
-        <Button
-            android:id="@+id/load"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:onClick="onClick_load"
-            android:text="메모 조회"
+            android:text="TITLE: "
+            android:textSize="30dp"
             />
 
+        <TextView
+            android:id="@+id/title"
+            android:hint="입력된 메모가 없습니다."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            />
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/title_text"
-        android:gravity="center_horizontal"
-        android:hint="Title"
+    <TextView
+        android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:textSize="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
         />
-
-    <EditText
-        android:id="@+id/maintext"
-        android:gravity="center_vertical"
-        android:hint="내용을 입력하시오."
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="30dp"
-        />
-
 
 </LinearLayout>

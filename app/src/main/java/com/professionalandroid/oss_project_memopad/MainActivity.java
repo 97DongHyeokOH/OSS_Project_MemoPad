@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onClick(View v) {
+    public void onClick_save(View v) {
         String title = title_text.getText().toString();
         String content = maintext.getText().toString();
 
@@ -42,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
         db.execSQL("INSERT INTO Memo(title, content) VALUES(?,?)", new String[]{title, content});
         db.close();
 
+        Intent intent = new Intent(this, ReadMemoActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClick_load(View v){
         Intent intent = new Intent(this, ReadMemoActivity.class);
         startActivity(intent);
     }
