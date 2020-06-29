@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -15,6 +17,7 @@ public class ReadMemoActivity extends AppCompatActivity {
     TextView TITLE_text;
     TextView title;
     TextView content;
+    Button delete;
     MainActivity.SimpleMemo MEMO;
 
     @Override
@@ -26,6 +29,7 @@ public class ReadMemoActivity extends AppCompatActivity {
         title = findViewById(R.id.title);
         content = findViewById(R.id.content);
         TITLE_text = findViewById(R.id.TITLE_text);
+        delete = findViewById(R.id.delete);
 
         MEMO = new MainActivity.SimpleMemo(this);
         SQLiteDatabase db = MEMO.getWritableDatabase();
@@ -37,5 +41,11 @@ public class ReadMemoActivity extends AppCompatActivity {
             content.setText(cursor.getString(1));
         }
         db.close();
+    }
+
+    public void onClick_delete(View v){
+        SQLiteDatabase db = MEMO.getReadableDatabase();
+        db.execSQL("DELETE FROM MEMO");
+        finish();
     }
 }
