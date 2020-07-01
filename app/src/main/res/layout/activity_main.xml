@@ -32,7 +32,6 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/text"
-            android:layout_marginLeft="5dp"
             android:onClick="onClick_save"
             android:text="메모 저장" />
 
@@ -40,7 +39,7 @@
             android:id="@+id/load"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:onClick="onClick_load"
             android:text="메모 조회"
             />
