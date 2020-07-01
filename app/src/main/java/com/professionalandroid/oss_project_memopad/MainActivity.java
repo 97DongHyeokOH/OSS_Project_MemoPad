@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView text;
     Button save;
+    Button load;
     EditText title_text;
     EditText maintext;
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         text = findViewById(R.id.text);
         save = findViewById(R.id.save);
+        load = findViewById(R.id.load);
         title_text = findViewById(R.id.title_text);
         maintext = findViewById(R.id.maintext);
 
